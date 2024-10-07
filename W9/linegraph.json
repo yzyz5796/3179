@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Average Life Expectancy at Birth"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/yzyz5796/3179/refs/heads/main/W9/data/life_expectancy.csv"
+  },
+  "transform": [{"filter": "datum.Year >= Year "}],
+  "width": 300,
+  "height": 300,
+  "layer": [
+    {
+      "mark": "line",
+      "encoding": {
+        "x": {"field": "Year", "type": "nominal"},
+        "y": {"field": "Average Life Expectancy at Birth", "type": "quantitative"},
+        "tooltip": [
+          {"field": "Year", "type": "nominal", "title": "Year"},
+          {
+            "field": "Average Life Expectancy at Birth",
+            "type": "quantitative",
+            "title": "Life Expectancy"
+          }
+
+        ]
+      }
+    }
+  ],
+  "params": [
+    {
+      "name": "Year",
+      "value": 2000,
+      "bind": {
+        "input": "range",
+        "min": 2000,
+        "max": 2022,
+        "step": 1,
+        "name": "Starting Year: "
+      }
+    }
+  ]
+}
