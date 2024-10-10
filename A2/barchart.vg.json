@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {"text": "Mean Expenditure by State (2022)"},
   "data": {
-    "url": "https://raw.githubusercontent.com/yzyz5796/3179/refs/heads/main/A2/hies_state.csv"
+    "url": "https://raw.githubusercontent.com/yzyz5796/3179/refs/heads/main/A2/data/hies_state.csv"
   },
   
   "width": 300,

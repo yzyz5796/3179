@@ -17,7 +17,7 @@
           "lookup": "properties.name",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/yzyz5796/3179/refs/heads/main/A2/hies_state.csv"
+              "url": "https://raw.githubusercontent.com/yzyz5796/3179/refs/heads/main/A2/data/hies_state.csv"
             },
             "key": "state",
             "fields": ["income_median"]
