@@ -1,0 +1,170 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width":400,
+    "height":300,
+    "title":"Mean and Median Income by State",
+    "data": {
+      "url": "https://raw.githubusercontent.com/yzyz5796/3179/refs/heads/main/A2/data/hh_income_state_filtered.csv"
+    },
+    "params": [
+      {
+        "name": "StateSelection",
+        "bind":{
+          "input": "select",
+          "options":[
+            null,
+            "Johor",
+            "Kedah",
+            "Kelantan",
+            "Melaka",
+            "Negeri Sembilan",
+            "Pahang",
+            "Pulau Pinang",
+            "Perak",
+            "Perlis",
+            "Selangor",
+            "Terengganu",
+            "Sabah",
+            "Sarawak",
+            "W.P. Kuala Lumpur",
+            "W.P. Labuan",
+            "W.P. Putrajaya"
+          ],
+          "labels": [
+            "Show All",
+            "Johor",
+            "Kedah",
+            "Kelantan",
+            "Melaka",
+            "Negeri Sembilan",
+            "Pahang",
+            "Pulau Pinang",
+            "Perak",
+            "Perlis",
+            "Selangor",
+            "Terengganu",
+            "Sabah",
+            "Sarawak",
+            "W.P. Kuala Lumpur",
+            "W.P. Labuan",
+            "W.P. Putrajaya"
+          ],
+          "name": "State Selected : "
+        }
+      },
+      {
+        "name": "Year",
+        "value":1970,
+        "bind":{
+          "input": "range",
+          "min": 1970,
+          "max": 2022,
+          "step": 2,
+          "name": "Year : "
+        }
+      }
+    ],
+    "transform": [
+      {"filter":"datum.date >= Year"},
+      {"filter":"StateSelection == null || datum.state == StateSelection"}
+    ],
+    "encoding": {
+      "x":{
+        "field":"date",
+        "type": "quantitative",
+        "title":"Year",
+        "scale":{"domain":[1960,2030]}
+      },
+      "y":{
+        "field":"income_mean",
+        "type": "quantitative",
+        "title":"Mean Income",
+        "scale":{"domain":[0,14000]}
+      }
+    },
+    "layer":[
+      {
+        "mark":"circle",
+        "encoding": {
+          "color":{
+          "field":"state",
+          "type": "nominal",
+          "scale":{
+            "domain":[
+              "Johor",
+              "Kedah",
+              "Kelantan",
+              "Melaka",
+              "Negeri Sembilan",
+              "Pahang",
+              "Pulau Pinang",
+              "Perak",
+              "Perlis",
+              "Selangor",
+              "Terengganu",
+              "Sabah",
+              "Sarawak",
+              "W.P. Kuala Lumpur",
+              "W.P. Labuan",
+              "W.P. Putrajaya"
+            ],
+            "range":[
+              "#FF5733",
+              "#e41a1c",
+              "#33A1FF",
+              "#984ea3" ,
+              "#28B463",
+              "#ff7f00" ,
+              "#FF33A1",
+              "#a6cee3" ,
+              "#8B4513",
+              "#377eb8" ,
+              "#8E44AD",
+              "#a65628",
+              "#2C3E50", 
+              "#F39C12", 
+              "#7D3C98", 
+              "#CD6155"
+            ]
+          }
+        },
+        "opacity":{"value": 0.7},
+        "size":{
+          "field":"income_median",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain":[1000,2500,5000,7500,10000],
+            "range":[50,100,200,400,600,800]
+          }
+        },
+        "tooltip":[
+          {"field":"state", "type": "nominal", "title":"State: "},
+          {"field":"date", "type": "quantitative", "title":"Year: "},
+          {"field":"income_mean", "type": "quantitative", "title": "Mean Income (RM): "},
+          {"field":"income_median", "type": "quantitative", "title": "Median Income (RM): "}
+        ]
+        }   
+      },
+      {
+        "mark":{
+          "type": "text",
+          "align":"center",
+          "baseline":"bottom",
+          "dy":-12,
+          "fontSize":11,
+          "fontStyle":"italic",
+          "fontWeight":"bold"
+        }, 
+        "encoding": {
+          "text":{"field":"Name", "type": "nominal"},
+          "color":{"value":"black"},
+          "opacity":{
+            "condition":{
+              "test":"datum.Name == 'Classic' || datum.Name == 'Judge' || datum.Name == 'Phantom' || datum.Name == 'Vandal' || datum.Name == 'Operator' || datum.Name == 'Odin'", "value":1},
+              "value":0
+            }
+        }
+      }
+    ]
+  }

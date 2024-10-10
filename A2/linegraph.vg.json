@@ -1,0 +1,51 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width":400,
+    "height":300,
+    "title":"Median Income by State over Time",      
+    "data": {
+      "url": "https://raw.githubusercontent.com/yzyz5796/3179/refs/heads/main/A2/data/hh_income_state_filtered.csv"
+    },
+    "params": [
+      {
+        "name": "StateSelection",
+        "bind": {
+          "input": "select",
+          "options": [null, "Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang", "Pulau Pinang", "Perak", "Perlis", "Selangor", "Terengganu", "Sabah", "Sarawak", "W.P. Kuala Lumpur", "W.P. Labuan", "W.P. Putrajaya"],
+          "labels": ["Show All", "Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang", "Pulau Pinang", "Perak", "Perlis", "Selangor", "Terengganu", "Sabah", "Sarawak", "W.P. Kuala Lumpur", "W.P. Labuan", "W.P. Putrajaya"],
+          "name": "State: "
+        }
+      }
+    ],
+    "transform": [
+      {
+        "filter": "StateSelection == null || datum.state == StateSelection"
+      }
+    ],
+    "mark": {
+      "type": "line",
+      "tooltip": true
+    },
+    "encoding": {
+      "x": {
+        "field": "date",
+        "type": "nominal",
+        "title": "Year"
+      },
+      "y": {
+        "field": "income_mean",
+        "type": "quantitative",
+        "title": "Income Mean"
+      },
+      "color": {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      "tooltip": [
+        {"field": "state", "type": "nominal", "title": "State: "},
+        {"field": "date", "type": "nominal", "title": "Year: "},
+        {"field": "income_mean", "type": "quantitative", "title": "Income Mean: "}
+      ]
+    }
+  }
