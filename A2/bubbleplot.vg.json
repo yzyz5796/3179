@@ -4,7 +4,7 @@
     "height":300,
     
     "title": {
-    "text": "Mean and Median Income by State",
+    "text": "Income and Expenditure by State",
     "fontSize": 24
   },
     "data": {
@@ -82,7 +82,7 @@
       "y":{
         "field":"income_mean",
         "type": "quantitative",
-        "title":"Mean Income",
+        "title":"Income",
         "scale":{"domain":[0,14000]}
       }
     },
@@ -134,8 +134,9 @@
         },
         "opacity":{"value": 0.7},
         "size":{
-          "field":"income_mean",
+          "field":"income_median",
           "type": "quantitative",
+          "title":"expenditure",
           "scale": {
             "type": "threshold",
             "domain":[1000,2500,5000,7500,10000],
@@ -145,8 +146,8 @@
         "tooltip":[
           {"field":"state", "type": "nominal", "title":"State: "},
           {"field":"date", "type": "quantitative", "title":"Year: "},
-          {"field":"income_mean", "type": "quantitative", "title": "Mean Income (RM): "},
-          {"field":"income_median", "type": "quantitative", "title": "Median Income (RM): "}
+          {"field":"income_mean", "type": "quantitative", "title": "Income (RM): "},
+          {"field":"income_median", "type": "quantitative", "title": "Expenditure (RM): "}
         ]
         }   
       },
