@@ -1,8 +1,11 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width":400,
-    "height":300,
-    "title":"Median Income by State over Time",      
+    "width": "container",
+    "height": 300,
+    "title": {
+    "text": "Median Income by State over Time",
+    "fontSize": 24
+  },
     "data": {
       "url": "https://raw.githubusercontent.com/yzyz5796/3179/refs/heads/main/A2/data/hh_income_state_filtered.csv"
     },
@@ -40,7 +43,45 @@
       "color": {
         "field": "state",
         "type": "nominal",
-        "title": "State"
+        "title": "State",
+        "scale": {
+          "domain": [
+            "Johor",
+            "Kedah",
+            "Kelantan",
+            "Melaka",
+            "Negeri Sembilan",
+            "Pahang",
+            "Pulau Pinang",
+            "Perak",
+            "Perlis",
+            "Selangor",
+            "Terengganu",
+            "Sabah",
+            "Sarawak",
+            "W.P. Kuala Lumpur",
+            "W.P. Labuan",
+            "W.P. Putrajaya"
+          ],
+          "range": [
+            "#FF5733",
+            "#e41a1c",
+            "#33A1FF",
+            "#984ea3",
+            "#28B463",
+            "#ff7f00",
+            "#FF33A1",
+            "#a6cee3",
+            "#8B4513",
+            "#377eb8",
+            "#8E44AD",
+            "#a65628",
+            "#2C3E50",
+            "#F39C12",
+            "#7D3C98",
+            "#CD6155"
+          ]
+        }
       },
       "tooltip": [
         {"field": "state", "type": "nominal", "title": "State: "},
@@ -49,3 +90,4 @@
       ]
     }
   }
+  

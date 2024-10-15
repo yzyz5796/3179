@@ -1,8 +1,12 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width":400,
+    "width":"container",
     "height":300,
-    "title":"Mean and Median Income by State",
+    
+    "title": {
+    "text": "Mean and Median Income by State",
+    "fontSize": 24
+  },
     "data": {
       "url": "https://raw.githubusercontent.com/yzyz5796/3179/refs/heads/main/A2/data/hh_income_state_filtered.csv"
     },
@@ -130,7 +134,7 @@
         },
         "opacity":{"value": 0.7},
         "size":{
-          "field":"income_median",
+          "field":"income_mean",
           "type": "quantitative",
           "scale": {
             "type": "threshold",
